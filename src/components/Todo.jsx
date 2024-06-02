@@ -2,7 +2,7 @@ import React from "react";
 import bgLight from "../assets/images/bg-desktop-light.jpg";
 import sun from "../assets/images/icon-sun.svg";
 import moon from "../assets/images/icon-moon.svg";
-import { IoCheckmarkOutline } from "react-icons/io5";
+import cross from "../assets/images/icon-cross.svg";
 
 const Todo = () => {
   return (
@@ -39,14 +39,17 @@ const Todo = () => {
         </form>
         <div className="md:w-[540px] md:h-[439px] w-[327px] h-[368px] bg-white mt-[16px] rounded-[8px] shadow-lg">
           <div className="mx-[23px] my-[20px] items-center">
-            <div className="flex flex-row gap-[12px] md:gap-[24px]">
-              <input
-                type="checkbox"
-                className="custom-checked md:w-[24px] md:h-[24px] w-[20px] h-[20px]"
-              />
-              <p className="md:text-[18px] text-[#494C6B] text-[12px]">
-                Jog around the park 3x
-              </p>
+            <div className="flex flex-row items-center justify-between ">
+              <div className="flex items-center gap-[12px] md:gap-[24px]">
+                <input
+                  type="checkbox"
+                  className="custom-checked md:w-[24px] md:h-[24px] w-[20px] h-[20px]"
+                />
+                <p className="md:text-[18px] text-[#494C6B] text-[12px]">
+                  Jog around the park 3x
+                </p>
+              </div>
+              <img src={cross} alt="cross-img" />
             </div>
             <hr className="md:mt-[20px] mt-[16px] border-[#E3E4F1] mx-[-23px]" />
           </div>
