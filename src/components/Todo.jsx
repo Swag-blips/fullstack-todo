@@ -2,6 +2,7 @@ import React from "react";
 import bgLight from "../assets/images/bg-desktop-light.jpg";
 import sun from "../assets/images/icon-sun.svg";
 import moon from "../assets/images/icon-moon.svg";
+import { IoCheckmarkOutline } from "react-icons/io5";
 
 const Todo = () => {
   return (
@@ -30,19 +31,24 @@ const Todo = () => {
               type="text"
               name="text"
               id="text"
-              className="md:w-[540px] w-[327px] pl-[54px] md:py-[23px] py-[18px] bg-white rounded-[8px] md:h-[64px] outline-none h-[48px]"
+              className="md:w-[540px] w-[327px] pl-[54px] md:pl-[67px] md:py-[23px] py-[18px] bg-white rounded-[8px] md:h-[64px] outline-none h-[48px]"
               placeholder="Create a new todo..."
             />
             <div className="w-[20px] h-[20px] absolute top-1/2 left-[1.4rem] transform -translate-y-1/2 md:w-[24px] md:h-[24px] border-[1px] border-[#E3E4F1] circle-border rounded-full" />
           </div>
         </form>
         <div className="md:w-[540px] md:h-[439px] w-[327px] h-[368px] bg-white mt-[16px] rounded-[8px] shadow-lg">
-          <div className="flex flex-row mx-[23px] gap-[12px] md:gap-[24px] my-[20px] items-center">
-            <input
-              type="checkbox"
-              className="md:w-[24px] md:h-[24px] w-[20px] h-[20px] rounded-full border-[1px] border-[#E3E4F1] appearance-none checked:border-transparent"
-            />
-            <p className="md:text-[18px] text-[12px]">Jog around the park 3x</p>
+          <div className="mx-[23px] my-[20px] items-center">
+            <div className="flex flex-row gap-[12px] md:gap-[24px]">
+              <input
+                type="checkbox"
+                className="custom-checked md:w-[24px] md:h-[24px] w-[20px] h-[20px]"
+              />
+              <p className="md:text-[18px] text-[#494C6B] text-[12px]">
+                Jog around the park 3x
+              </p>
+            </div>
+            <hr className="md:mt-[20px] mt-[16px] border-[#E3E4F1] mx-[-23px]" />
           </div>
         </div>
       </section>

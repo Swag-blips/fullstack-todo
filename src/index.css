@@ -13,3 +13,31 @@ body {
   font-family: "Josefin Sans", sans-serif;
   font-optical-sizing: auto;
 }
+
+.custom-checked {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  appearance: none;
+  border: 1px solid #e3e4f1;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.custom-checked:checked {
+  border: none;
+  background-image: linear-gradient(to bottom, #55ddff, #c058f3);
+}
+
+.custom-checked:checked::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 12px;
+  height: 12px;
+  background-image: url("./assets/images/icon-check.svg"); /* Update with your image path */
+  background-size: cover;
+  background-repeat: no-repeat;
+  transform: translate(-50%, -50%);
+}
