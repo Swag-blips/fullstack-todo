@@ -128,7 +128,7 @@ const Todo = () => {
             </div>
             <hr className="md:mt-[20px] mt-[16px] border-[#E3E4F1] mx-[-23px]" />
           </div>
-          <div className="mx-[23px] my-[20px] items-center">
+          <div className="mx-[23px]  items-center">
             <div className="flex flex-row items-center justify-between ">
               <div className="flex items-center gap-[12px] md:gap-[24px]">
                 <input
@@ -145,17 +145,26 @@ const Todo = () => {
           </div>
 
           <div className="bottom-0 z-50 pt-[20px] pb-[20px] bg-white border-t border-t-[#E3E4F1] w-full sticky">
-            <div className="flex-row text-[14px] tracking-[-0.19px] flex mx-[24px]  items-center justify-between">
+            <div className="flex-row text-[12px] md:text-[14px] tracking-[-0.19px] flex mx-[24px]  items-center justify-between">
               <p className=" text-[#9495A5] text-left">5 items left</p>
-              <div className="flex-row flex cursor-pointer font-bold gap-[20px] items-center">
-                <p className="text-[#3A7CFD] ">All</p>
-                <p className="text-[#494C6B]">Active</p>
-                <p className="text-[#9495A5]">Completed</p>
+              <div className="flex-row hidden md:flex  cursor-pointer font-bold gap-[20px] items-center">
+                <p className="text-[#3A7CFD] hover:text-[#494c6b] ">All</p>
+                <p className="text-[#9495A5] hover:text-[#494c6b]">Active</p>
+                <p className="text-[#9495A5] hover:text-[#494c6b]">Completed</p>
               </div>
               <button className="text-[#494C6B]">Clear completed</button>
             </div>
           </div>
         </div>
+        <div className="bg-white shadow-lg  md:hidden py-[15px] mt-[16px] w-[327px] h-[48px]">
+          <div className="flex text-[14px] gap-[20px] tracking-[-0.19px]  items-center justify-center">
+            <p className="text-[#3A7CFD] hover:text-[#494c6b] ">All</p>
+            <p className="text-[#9495A5] hover:text-[#494c6b]">Active</p>
+            <p className="text-[#9495A5] hover:text-[#494c6b]">Completed</p>
+          </div>
+        </div>
+
+        <p className="text-[#9495A5] text-[14px] tracking-[-0.19px] mt-[40px] flex items-center justify-center">Drag and drop to reorder list</p>
       </section>
     </section>
   );
