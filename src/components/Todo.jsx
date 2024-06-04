@@ -37,7 +37,7 @@ const Todo = () => {
             <div className="w-[20px] h-[20px] absolute top-1/2 left-[1.4rem] transform -translate-y-1/2 md:w-[24px] md:h-[24px] border-[1px] border-[#E3E4F1] circle-border rounded-full" />
           </div>
         </form>
-        <div className="md:w-[540px] md:h-[439px] w-[327px] h-[368px] bg-white mt-[16px] rounded-[8px] shadow-lg">
+        <div className="md:w-[540px] md:h-[439px] w-[327px] relative h-[368px] bg-white mt-[16px] rounded-[8px] shadow-lg">
           <div className="mx-[23px] my-[20px] items-center">
             <div className="flex flex-row items-center justify-between ">
               <div className="flex items-center gap-[12px] md:gap-[24px]">
@@ -49,9 +49,22 @@ const Todo = () => {
                   Jog around the park 3x
                 </p>
               </div>
-              <img src={cross} alt="cross-img" />
+              <img src={cross} alt="cross-img" className="cursor-pointer" />
             </div>
             <hr className="md:mt-[20px] mt-[16px] border-[#E3E4F1] mx-[-23px]" />
+          </div>
+          <div className="bottom-0  w-full  absolute">
+            <div className="flex-row text-[14px] tracking-[-0.19px] flex mx-[24px] mb-[20px] items-center justify-between">
+              <p className=" text-[#9495A5] text-left">5 items left</p>
+
+              <div className="flex-row flex cursor-pointer font-bold gap-[20px] items-center">
+                <p className="text-[#3A7CFD] ">All</p>
+                <p className="text-[#494C6B]">Active</p>
+                <p className="text-[#9495A5]">Completed</p>
+              </div>
+
+              <button className="text-[#494C6B]">Clear completed</button>
+            </div>
           </div>
         </div>
       </section>
