@@ -18,9 +18,10 @@ const Todo = () => {
     setCompleted(false);
     setActive(true);
   };
+
   return (
-    <section className="flex items-center flex-col justify-center">
-      <figure className="w-full md:h-[300px] h-[200px]">
+    <section className="flex items-center bg-[#fafafa] flex-col justify-center min-h-screen">
+      <figure className="w-full md:h-[300px] absolute top-0 h-[200px]">
         <img
           src={bgLight}
           alt="background-img"
@@ -56,10 +57,10 @@ const Todo = () => {
             {completed && <Completed />}
           </div>
           <div className="bottom-0 z-50 pt-[20px] pret-div pb-[20px] bg-white border-t border-t-[#E3E4F1] w-full">
-            <div className="flex-row text-[12px] md:text-[14px] tracking-[-0.19px] flex mx-[24px]  items-center justify-between">
-              <p className=" text-[#9495A5] text-left">5 items left</p>
-              <div className="flex-row hidden md:flex  cursor-pointer font-bold gap-[20px] items-center">
-                <p className="text-[#3A7CFD] hover:text-[#494c6b] ">All</p>
+            <div className="flex-row text-[12px] md:text-[14px] tracking-[-0.19px] flex mx-[24px] items-center justify-between">
+              <p className="text-[#9495A5] text-left">5 items left</p>
+              <div className="flex-row hidden md:flex cursor-pointer font-bold gap-[20px] items-center">
+                <p className="text-[#3A7CFD] hover:text-[#494c6b]">All</p>
                 <p
                   onClick={toggleToActive}
                   className="text-[#9495A5] hover:text-[#494c6b]"
@@ -77,9 +78,9 @@ const Todo = () => {
             </div>
           </div>
         </div>
-        <div className="bg-white shadow-lg  md:hidden py-[15px] mt-[16px] w-[327px] h-[48px]">
-          <div className="flex text-[14px] gap-[20px] tracking-[-0.19px]  items-center justify-center">
-            <p className="text-[#3A7CFD] hover:text-[#494c6b] ">All</p>
+        <div className="bg-white shadow-lg md:hidden py-[15px] mt-[16px] w-[327px] h-[48px]">
+          <div className="flex text-[14px] gap-[20px] tracking-[-0.19px] items-center justify-center">
+            <p className="text-[#3A7CFD] hover:text-[#494c6b]">All</p>
             <p
               onClick={toggleToActive}
               className="text-[#9495A5] hover:text-[#494c6b]"
