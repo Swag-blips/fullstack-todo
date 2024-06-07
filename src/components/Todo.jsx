@@ -6,21 +6,31 @@ import moon from "../assets/images/icon-moon.svg";
 import { ThemeContext } from "../../context/ThemeProvider";
 import Active from "./Active";
 import Completed from "./Completed";
+import All from "./All";
 
 const Todo = () => {
-  const [active, setActive] = useState(true);
+  const [all, setAll] = useState(true);
+  const [active, setActive] = useState(false);
   const [completed, setCompleted] = useState(false);
   const { handleThemeSwitch, theme } = useContext(ThemeContext);
 
   const isDark = theme === "dark";
 
+  const toggleToAll = () => {
+    setCompleted(false);
+    setActive(false);
+    setAll(true);
+  };
+
   const toggleToCompleted = () => {
     setCompleted(true);
     setActive(false);
+    setAll(false);
   };
   const toggleToActive = () => {
     setCompleted(false);
     setActive(true);
+    setAll(false);
   };
 
   return (
@@ -31,7 +41,7 @@ const Todo = () => {
             <img
               src={bgDark}
               alt="background-img"
-              className="w-full object-cover h-full "
+              className="w-full object-cover h-[200px] "
             />
           </div>
         ) : (
@@ -77,6 +87,7 @@ const Todo = () => {
         </form>
         <div className="md:w-[540px] md:h-[439px] w-[327px] flex flex-col overflow-hidden dark:bg-[#25273D] bg-white mt-[16px] rounded-[8px] shadow-lg">
           <div className="flex-grow overflow-y-auto">
+            {all && <All />}
             {active && <Active />}
             {completed && <Completed />}
           </div>
@@ -86,16 +97,33 @@ const Todo = () => {
                 5 items left
               </p>
               <div className="flex-row hidden md:flex cursor-pointer font-bold gap-[20px] items-center">
-                <p className="text-[#3A7CFD] hover:text-[#494c6b]">All</p>
+                <p
+                  onClick={toggleToAll}
+                  className={`${
+                    all
+                      ? "text-[#3A7CFD]  dark:text-[##3A7CFD]"
+                      : "text-[#9495A5] dark:text-[#5B5E7E] "
+                  } hover:text-[#494c6b] dark:hover:text-[#E3E4F1]`}
+                >
+                  All
+                </p>
                 <p
                   onClick={toggleToActive}
-                  className="text-[#9495A5] dark:text-[#5B5E7E]  dark:hover:text-[#E3E4F1] hover:text-[#494c6b]"
+                  className={`${
+                    active
+                      ? "text-[#3A7CFD] dark:text-[##3A7CFD]"
+                      : "text-[#9495A5] dark:text-[#5B5E7E]"
+                  }    dark:hover:text-[#E3E4F1] hover:text-[#494c6b]`}
                 >
                   Active
                 </p>
                 <p
                   onClick={toggleToCompleted}
-                  className="text-[#9495A5] dark:text-[#5B5E7E]  dark:hover:text-[#E3E4F1] hover:text-[#494c6b]"
+                  className={`${
+                    completed
+                      ? "text-[#3A7CFD]  dark:text-[##3A7CFD]"
+                      : "text-[#9495A5] dark:text-[#5B5E7E] "
+                  } hover:text-[#494c6b] dark:hover:text-[#E3E4F1]`}
                 >
                   Completed
                 </p>
@@ -108,7 +136,12 @@ const Todo = () => {
         </div>
         <div className="bg-white dark:bg-[#25273D] shadow-lg md:hidden py-[15px] mt-[16px] w-[327px] h-[48px]">
           <div className="flex text-[14px] gap-[20px] tracking-[-0.19px] items-center justify-center">
-            <p className="text-[#3A7CFD] hover:text-[#494c6b]">All</p>
+            <p
+              onClick={toggleToAll}
+              className="text-[#3A7CFD] hover:text-[#494c6b]"
+            >
+              All
+            </p>
             <p
               onClick={toggleToActive}
               className="text-[#9495A5] dark:text-[#5B5E7E] dark:hover:text-[#E3E4F1]  hover:text-[#494c6b]"
