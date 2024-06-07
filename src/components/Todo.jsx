@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import bgLight from "../assets/images/bg-desktop-light.jpg";
 import bgDark from "../assets/images/bg-desktop-dark.jpg";
 import sun from "../assets/images/icon-sun.svg";
@@ -9,29 +9,28 @@ import Completed from "./Completed";
 import All from "./All";
 
 const Todo = () => {
-  const [all, setAll] = useState(true);
-  const [active, setActive] = useState(false);
-  const [completed, setCompleted] = useState(false);
+  const [visibilityFilter, setVisibilityFilter] = useState(() => {
+    try {
+      const savedItem = window.localStorage.getItem("visibilityFilter");
+      return savedItem ? JSON.parse(savedItem) : "all";
+    } catch (err) {
+      console.log(err.message);
+      return "all";
+    }
+  });
   const { handleThemeSwitch, theme } = useContext(ThemeContext);
-
   const isDark = theme === "dark";
 
-  const toggleToAll = () => {
-    setCompleted(false);
-    setActive(false);
-    setAll(true);
-  };
+  useEffect(() => {
+    window.localStorage.setItem(
+      "visibilityFilter",
+      JSON.stringify(visibilityFilter)
+    );
+  }, [visibilityFilter]);
 
-  const toggleToCompleted = () => {
-    setCompleted(true);
-    setActive(false);
-    setAll(false);
-  };
-  const toggleToActive = () => {
-    setCompleted(false);
-    setActive(true);
-    setAll(false);
-  };
+  const toggleToAll = () => setVisibilityFilter("all");
+  const toggleToCompleted = () => setVisibilityFilter("completed");
+  const toggleToActive = () => setVisibilityFilter("active");
 
   return (
     <section className="flex items-center dark:bg-[#171823] bg-[#fafafa] flex-col justify-center min-h-screen">
@@ -87,9 +86,9 @@ const Todo = () => {
         </form>
         <div className="md:w-[540px] md:h-[439px] w-[327px] flex flex-col overflow-hidden dark:bg-[#25273D] bg-white mt-[16px] rounded-[8px] shadow-lg">
           <div className="flex-grow overflow-y-auto">
-            {all && <All />}
-            {active && <Active />}
-            {completed && <Completed />}
+            {visibilityFilter === "all" && <All />}
+            {visibilityFilter === "active" && <Active />}
+            {visibilityFilter === "completed" && <Completed />}
           </div>
           <div className="bottom-0 z-50 pt-[20px] pret-div pb-[20px] dark:bg-[#25273D] bg-white border-t border-t-[#E3E4F1] dark:border-t-[#393A4B] w-full">
             <div className="flex-row text-[12px] md:text-[14px] tracking-[-0.19px] flex mx-[24px] items-center justify-between">
@@ -100,7 +99,7 @@ const Todo = () => {
                 <p
                   onClick={toggleToAll}
                   className={`${
-                    all
+                    visibilityFilter === "all"
                       ? "text-[#3A7CFD]  dark:text-[##3A7CFD]"
                       : "text-[#9495A5] dark:text-[#5B5E7E] "
                   } hover:text-[#494c6b] dark:hover:text-[#E3E4F1]`}
@@ -110,7 +109,7 @@ const Todo = () => {
                 <p
                   onClick={toggleToActive}
                   className={`${
-                    active
+                    visibilityFilter === "active"
                       ? "text-[#3A7CFD] dark:text-[##3A7CFD]"
                       : "text-[#9495A5] dark:text-[#5B5E7E]"
                   }    dark:hover:text-[#E3E4F1] hover:text-[#494c6b]`}
@@ -120,7 +119,7 @@ const Todo = () => {
                 <p
                   onClick={toggleToCompleted}
                   className={`${
-                    completed
+                    visibilityFilter === "completed"
                       ? "text-[#3A7CFD]  dark:text-[##3A7CFD]"
                       : "text-[#9495A5] dark:text-[#5B5E7E] "
                   } hover:text-[#494c6b] dark:hover:text-[#E3E4F1]`}
