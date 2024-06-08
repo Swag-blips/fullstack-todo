@@ -33,14 +33,14 @@ const Todo = () => {
   const toggleToActive = () => setVisibilityFilter("active");
 
   return (
-    <section className="flex items-center dark:bg-[#171823] bg-[#fafafa] flex-col justify-center min-h-screen">
+    <section className="flex items-center dark:bg-[#171823] bg-[#fafafa] flex-col justify-center h-screen">
       <figure className="w-full md:h-[300px] absolute top-0 h-[200px]">
         {isDark ? (
           <div>
             <img
               src={bgDark}
               alt="background-img"
-              className="w-full object-cover h-[200px] "
+              className="w-full object-cover md:h-[300px] h-[200px] "
             />
           </div>
         ) : (

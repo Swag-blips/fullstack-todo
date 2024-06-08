@@ -2,7 +2,7 @@ import React, { createContext, useState, useEffect } from "react";
 
 export const ThemeContext = createContext();
 
-export const ThemeProvider = ({ children }) => {
+const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState(() => {
     try {
       const savedTheme = window.localStorage.getItem("currentTheme");
@@ -35,3 +35,5 @@ export const ThemeProvider = ({ children }) => {
     </ThemeContext.Provider>
   );
 };
+
+export default ThemeProvider;
