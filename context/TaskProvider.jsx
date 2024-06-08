@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useState, useEffect } from "react";
 import toast from "react-hot-toast";
 import { Validation } from "../utils/Validation";
 
@@ -15,12 +15,20 @@ const TaskProvider = ({ children }) => {
     if (!Validation({ text, setError })) {
       return;
     }
-    setTodos((prevState) => [
-      ...prevState,
+    setTodos((prevTodos) => [
+      ...prevTodos,
       { id: Date.now(), taskName: text, isCompleted: false },
     ]);
     setText("");
     toast.success("task added");
+  };
+
+  const toggleToCompleted = (id) => {
+    setTodos((prevTodos) =>
+      prevTodos.map((todo) =>
+        todo.id === id ? { ...todo, isCompleted: !todo.isCompleted } : todo
+      )
+    );
   };
 
   const handleInputChange = (e) => {
@@ -29,7 +37,14 @@ const TaskProvider = ({ children }) => {
 
   return (
     <TaskContext.Provider
-      value={{ todos, error, text, handleInputChange, addTodos }}
+      value={{
+        todos,
+        error,
+        text,
+        handleInputChange,
+        toggleToCompleted,
+        addTodos,
+      }}
     >
       {children}
     </TaskContext.Provider>

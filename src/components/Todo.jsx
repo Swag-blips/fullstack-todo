@@ -20,7 +20,7 @@ const Todo = () => {
     }
   });
   const { handleThemeSwitch, theme } = useContext(ThemeContext);
-  const { todos, addTodos, handleInputChange, text } = useContext(TaskContext);
+  const { addTodos, handleInputChange, text } = useContext(TaskContext);
   const isDark = theme === "dark";
 
   useEffect(() => {

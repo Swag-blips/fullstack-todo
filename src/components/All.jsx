@@ -3,7 +3,7 @@ import cross from "../assets/images/icon-cross.svg";
 import { TaskContext } from "../../context/TaskProvider";
 
 const All = () => {
-  const { todos } = useContext(TaskContext);
+  const { todos, toggleToCompleted } = useContext(TaskContext);
   console.log(todos);
   return (
     <>
@@ -13,6 +13,7 @@ const All = () => {
             <div className="flex items-center gap-[12px] md:gap-[24px]">
               <input
                 type="checkbox"
+                onChange={() => toggleToCompleted(todo.id)}
                 className="custom-checked md:w-[24px] dark:border-[#393A4B] md:h-[24px] w-[20px] h-[20px]"
               />
               <p className="md:text-[18px] text-[#494C6B] dark:text-[#C8CBE7] text-[12px] truncate w-[200px] md:w-[400px]">
