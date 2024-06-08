@@ -20,6 +20,7 @@ const TaskProvider = ({ children }) => {
       { id: Date.now(), taskName: text, isCompleted: false },
     ]);
     setText("");
+    toast.success("task added");
   };
 
   const handleInputChange = (e) => {

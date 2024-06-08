@@ -33,7 +33,6 @@ const Todo = () => {
   const toggleToAll = () => setVisibilityFilter("all");
   const toggleToCompleted = () => setVisibilityFilter("completed");
   const toggleToActive = () => setVisibilityFilter("active");
-  console.log(todos);
 
   return (
     <section className="flex items-center dark:bg-[#171823] bg-[#fafafa] flex-col justify-center h-screen">
@@ -145,19 +144,31 @@ const Todo = () => {
           <div className="flex text-[14px] gap-[20px] tracking-[-0.19px] items-center justify-center">
             <p
               onClick={toggleToAll}
-              className="text-[#3A7CFD] hover:text-[#494c6b]"
+              className={`${
+                visibilityFilter === "all"
+                  ? "text-[#3A7CFD]  dark:text-[##3A7CFD]"
+                  : "text-[#9495A5] dark:text-[#5B5E7E] "
+              } hover:text-[#494c6b] dark:hover:text-[#E3E4F1]`}
             >
               All
             </p>
             <p
               onClick={toggleToActive}
-              className="text-[#9495A5] dark:text-[#5B5E7E] dark:hover:text-[#E3E4F1]  hover:text-[#494c6b]"
+              className={`${
+                visibilityFilter === "active"
+                  ? "text-[#3A7CFD] dark:text-[##3A7CFD]"
+                  : "text-[#9495A5] dark:text-[#5B5E7E]"
+              }    dark:hover:text-[#E3E4F1] hover:text-[#494c6b]`}
             >
               Active
             </p>
             <p
               onClick={toggleToCompleted}
-              className="text-[#9495A5] dark:text-[#5B5E7E]  dark:hover:text-[#E3E4F1] hover:text-[#494c6b]"
+              className={`${
+                visibilityFilter === "completed"
+                  ? "text-[#3A7CFD]  dark:text-[##3A7CFD]"
+                  : "text-[#9495A5] dark:text-[#5B5E7E] "
+              } hover:text-[#494c6b] dark:hover:text-[#E3E4F1]`}
             >
               Completed
             </p>
