@@ -4,6 +4,7 @@ import bgDark from "../assets/images/bg-desktop-dark.jpg";
 import sun from "../assets/images/icon-sun.svg";
 import moon from "../assets/images/icon-moon.svg";
 import { ThemeContext } from "../../context/ThemeProvider";
+import { TaskContext } from "../../context/TaskProvider";
 import Active from "./Active";
 import Completed from "./Completed";
 import All from "./All";
@@ -19,6 +20,7 @@ const Todo = () => {
     }
   });
   const { handleThemeSwitch, theme } = useContext(ThemeContext);
+  const { todos, addTodos, handleInputChange, text } = useContext(TaskContext);
   const isDark = theme === "dark";
 
   useEffect(() => {
@@ -31,6 +33,7 @@ const Todo = () => {
   const toggleToAll = () => setVisibilityFilter("all");
   const toggleToCompleted = () => setVisibilityFilter("completed");
   const toggleToActive = () => setVisibilityFilter("active");
+  console.log(todos);
 
   return (
     <section className="flex items-center dark:bg-[#171823] bg-[#fafafa] flex-col justify-center h-screen">
@@ -72,12 +75,17 @@ const Todo = () => {
             />
           )}
         </div>
-        <form className="mt-[40px] text-[#9495A5] dark:text-[#767992] text-[12px] md:text-[18px] font-normal tracking-[-0.17px]">
+        <form
+          onSubmit={addTodos}
+          className="mt-[40px] text-[#9495A5] dark:text-[#767992] text-[12px] md:text-[18px] font-normal tracking-[-0.17px]"
+        >
           <div className="relative">
             <input
               type="text"
               name="text"
               id="text"
+              value={text || ""}
+              onChange={handleInputChange}
               className="md:w-[540px] w-[327px] pl-[54px] md:pl-[67px] md:py-[23px] py-[18px] dark:bg-[#25273D] bg-white rounded-[8px] md:h-[64px] outline-none h-[48px]"
               placeholder="Create a new todo..."
             />
@@ -127,7 +135,7 @@ const Todo = () => {
                   Completed
                 </p>
               </div>
-              <button className="text-[#494C6B] dark:text-[#5B5E7E]  dark:hover:text-[#E3E4F1] dark:text-[#5B5E7E]">
+              <button className="text-[#494C6B] dark:text-[#5B5E7E]  dark:hover:text-[#E3E4F1]">
                 Clear completed
               </button>
             </div>
