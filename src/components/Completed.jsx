@@ -4,13 +4,12 @@ import cross from "../assets/images/icon-cross.svg";
 
 const Completed = () => {
   const { todos } = useContext(TaskContext);
-
   const completedTodos = todos.filter((todo) => todo.isCompleted);
-  console.log(completedTodos);
+
   return (
     <>
       {completedTodos.map((todo) => (
-        <div className="mx-[23px] mt-[20px] items-center">
+        <div key={todo.id} className="mx-[23px] mt-[20px] items-center">
           <div className="flex flex-row items-center justify-between ">
             <div className="flex items-center gap-[12px] md:gap-[24px]">
               <p className="md:text-[18px] text-[#494C6B] dark:text-[#C8CBE7] text-[12px] truncate w-[200px] md:w-[400px]">

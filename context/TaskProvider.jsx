@@ -5,9 +5,16 @@ import { Validation } from "../utils/Validation";
 export const TaskContext = createContext();
 
 const TaskProvider = ({ children }) => {
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState(() => {
+    const savedTodos = window.localStorage.getItem("todos");
+    return savedTodos ? JSON.parse(savedTodos) : [];
+  });
   const [error, setError] = useState({ text: "" });
   const [text, setText] = useState("");
+
+  useEffect(() => {
+    window.localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
 
   const addTodos = (e) => {
     e.preventDefault();
@@ -31,6 +38,10 @@ const TaskProvider = ({ children }) => {
     );
   };
 
+  const deleteTodo = (id) => {
+    setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== id));
+  };
+
   const handleInputChange = (e) => {
     setText(e.target.value);
   };
@@ -40,6 +51,7 @@ const TaskProvider = ({ children }) => {
       value={{
         todos,
         error,
+        deleteTodo,
         text,
         handleInputChange,
         toggleToCompleted,
