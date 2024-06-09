@@ -20,8 +20,9 @@ const Todo = () => {
     }
   });
   const { handleThemeSwitch, theme } = useContext(ThemeContext);
-  const { addTodos, handleInputChange, text } = useContext(TaskContext);
+  const { addTodos, todos, handleInputChange, text } = useContext(TaskContext);
   const isDark = theme === "dark";
+  const itemsRemain = todos.length;
 
   useEffect(() => {
     window.localStorage.setItem(
@@ -100,7 +101,7 @@ const Todo = () => {
           <div className="bottom-0 z-50 pt-[20px] pret-div pb-[20px] dark:bg-[#25273D] bg-white border-t border-t-[#E3E4F1] dark:border-t-[#393A4B] w-full">
             <div className="flex-row text-[12px] md:text-[14px] tracking-[-0.19px] flex mx-[24px] items-center justify-between">
               <p className="text-[#9495A5] dark:text-[#5B5E7E] text-left">
-                5 items left
+                {`${itemsRemain} items left`}
               </p>
               <div className="flex-row hidden md:flex cursor-pointer font-bold gap-[20px] items-center">
                 <p
