@@ -6,8 +6,12 @@ export const TaskContext = createContext();
 
 const TaskProvider = ({ children }) => {
   const [todos, setTodos] = useState(() => {
-    const savedTodos = window.localStorage.getItem("todos");
-    return savedTodos ? JSON.parse(savedTodos) : [];
+    try {
+      const savedTodos = window.localStorage.getItem("todos");
+      return savedTodos ? JSON.parse(savedTodos) : [];
+    } catch (err) {
+      return [];
+    }
   });
   const [error, setError] = useState({ text: "" });
   const [text, setText] = useState("");
@@ -27,7 +31,9 @@ const TaskProvider = ({ children }) => {
       { id: Date.now(), taskName: text, isCompleted: false },
     ]);
     setText("");
-    toast.success("task added");
+    toast.success("task added", {
+      duration: 1000,
+    });
   };
 
   const toggleToCompleted = (id) => {

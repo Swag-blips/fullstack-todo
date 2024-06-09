@@ -15,7 +15,6 @@ const Todo = () => {
       const savedItem = window.localStorage.getItem("visibilityFilter");
       return savedItem ? JSON.parse(savedItem) : "all";
     } catch (err) {
-      console.log(err.message);
       return "all";
     }
   });
@@ -37,7 +36,7 @@ const Todo = () => {
   const toggleToActive = () => setVisibilityFilter("active");
 
   return (
-    <section className="flex items-center dark:bg-[#171823] bg-[#fafafa] flex-col justify-center h-screen">
+    <section className="flex items-center flex-col justify-center min-h-screen pb-[40px]">
       <figure className="w-full md:h-[300px] absolute top-0 h-[200px]">
         {isDark ? (
           <div>
@@ -56,7 +55,7 @@ const Todo = () => {
         )}
       </figure>
       <section className="absolute top-0 md:mt-[70px] flex flex-col mt-[48px] z-50">
-        <div className="flex items-center justify-between md:w-[540px] w-[325px]">
+        <div className="flex  items-center justify-between md:w-[540px] xs:w-[325px] w-[300px]">
           <h1 className="text-white font-bold uppercase text-[20px] md:text-[40px] tracking-[10px] md:tracking-[15px]">
             Todo
           </h1>
@@ -87,13 +86,13 @@ const Todo = () => {
               id="text"
               value={text || ""}
               onChange={handleInputChange}
-              className="md:w-[540px] w-[327px] pl-[54px] md:pl-[67px] md:py-[23px] py-[18px] dark:bg-[#25273D] bg-white rounded-[8px] md:h-[64px] outline-none h-[48px]"
+              className="md:w-[540px] w-[300px] xs:w-[327px] pl-[54px] md:pl-[67px] md:py-[23px] py-[18px] dark:bg-[#25273D] bg-white rounded-[8px] md:h-[64px] outline-none h-[48px]"
               placeholder="Create a new todo..."
             />
             <div className="w-[20px] h-[20px] absolute top-1/2 left-[1.4rem] transform -translate-y-1/2 md:w-[24px] md:h-[24px] border-[1px] border-[#E3E4F1] dark:border-[#393A4B] circle-border rounded-full" />
           </div>
         </form>
-        <div className="md:w-[540px] md:h-[439px] w-[327px] flex flex-col overflow-hidden dark:bg-[#25273D] bg-white mt-[16px] rounded-[8px] shadow-lg">
+        <div className="md:w-[540px] md:h-[439px] xs:w-[327px] w-[300px] flex flex-col overflow-hidden dark:bg-[#25273D] bg-white mt-[16px] rounded-[8px] shadow-lg">
           <div className="flex-grow overflow-y-auto">
             {visibilityFilter === "all" && <All />}
             {visibilityFilter === "active" && <Active />}
@@ -145,7 +144,7 @@ const Todo = () => {
             </div>
           </div>
         </div>
-        <div className="bg-white dark:bg-[#25273D] shadow-lg md:hidden py-[15px] mt-[16px] w-[327px] h-[48px]">
+        <div className="bg-white dark:bg-[#25273D] shadow-lg md:hidden py-[15px] mt-[16px] w-[300px] xs:w-[327px] h-[48px]">
           <div className="flex text-[14px] gap-[20px] tracking-[-0.19px] items-center justify-center">
             <p
               onClick={toggleToAll}

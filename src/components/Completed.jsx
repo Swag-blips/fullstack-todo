@@ -3,7 +3,7 @@ import { TaskContext } from "../../context/TaskProvider";
 import cross from "../assets/images/icon-cross.svg";
 
 const Completed = () => {
-  const { todos } = useContext(TaskContext);
+  const { todos, deleteTodo } = useContext(TaskContext);
   const completedTodos = todos.filter((todo) => todo.isCompleted);
 
   return (
@@ -16,7 +16,12 @@ const Completed = () => {
                 {todo.taskName}
               </p>
             </div>
-            <img src={cross} alt="cross-img" className="cursor-pointer" />
+            <img
+              onClick={() => deleteTodo(todo.id)}
+              src={cross}
+              alt="cross-img"
+              className="cursor-pointer"
+            />
           </div>
           <hr className="md:mt-[20px] mt-[16px] border-[#E3E4F1] dark:border-[#393A4B] mx-[-23px]" />
         </div>

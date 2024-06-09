@@ -37,6 +37,11 @@
 body {
   font-family: "Josefin Sans", sans-serif;
   font-optical-sizing: auto;
+  background-color: #fafafa;
+}
+
+.dark body {
+  background-color: #171823;
 }
 
 .custom-checked {

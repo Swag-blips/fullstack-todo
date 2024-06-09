@@ -3,8 +3,8 @@ import cross from "../assets/images/icon-cross.svg";
 import { TaskContext } from "../../context/TaskProvider";
 
 const All = () => {
-  const { todos, toggleToCompleted, deleteTodo} = useContext(TaskContext);
-  console.log(todos);
+  const { todos, toggleToCompleted, deleteTodo } = useContext(TaskContext);
+  todos;
   return (
     <>
       {todos.map((todo) => (
