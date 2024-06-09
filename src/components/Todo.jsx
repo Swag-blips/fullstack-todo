@@ -20,7 +20,8 @@ const Todo = () => {
     }
   });
   const { handleThemeSwitch, theme } = useContext(ThemeContext);
-  const { addTodos, todos, handleInputChange, text } = useContext(TaskContext);
+  const { addTodos, todos, handleInputChange, text, clearCompleted } =
+    useContext(TaskContext);
   const isDark = theme === "dark";
   const itemsRemain = todos.length;
 
@@ -135,7 +136,10 @@ const Todo = () => {
                   Completed
                 </p>
               </div>
-              <button className="text-[#494C6B] dark:text-[#5B5E7E]  dark:hover:text-[#E3E4F1]">
+              <button
+                onClick={() => clearCompleted()}
+                className="text-[#494C6B] dark:text-[#5B5E7E]  dark:hover:text-[#E3E4F1]"
+              >
                 Clear completed
               </button>
             </div>

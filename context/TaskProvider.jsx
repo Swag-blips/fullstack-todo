@@ -42,6 +42,10 @@ const TaskProvider = ({ children }) => {
     setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== id));
   };
 
+  const clearCompleted = () => {
+    setTodos((prevTodos) => prevTodos.filter((todo) => !todo.isCompleted));
+  };
+
   const handleInputChange = (e) => {
     setText(e.target.value);
   };
@@ -55,6 +59,7 @@ const TaskProvider = ({ children }) => {
         text,
         handleInputChange,
         toggleToCompleted,
+        clearCompleted,
         addTodos,
       }}
     >
